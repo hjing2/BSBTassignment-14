@@ -1,71 +1,97 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # BSBTassignment-14
+
+# Portfolio Website
+
+## Overview
+
+This is a portfolio website that highlights the course work done thus far in the program. The project is built using React and showcases various projects, skills, and experience. The final submission is a dockerized Create React App site that runs at `localhost:5575`.
+
+## Instructions to Run the Application
+
+### Prerequisites
+
+- Docker installed on your machine.
+
+### Steps to Build and Run
+
+1. **Build the Docker Image:**
+
+   ```sh
+   docker build -t jing_haodan_coding_assignment14 .
+
+   ```
+
+2. **Run the Docker Container:**
+   ```sh
+   docker run -p 5575:80 jing_haodan_coding_assignment14
+   ```
+
+## Access the Application
+
+Open your web browser and navigate to http://localhost:5575.
+
+## Project Structure
+
+The project is organized into the following directories:
+
+src/
+├── components/
+│ ├── Header.js
+│ ├── Header.css
+│ ├── BasicInfoPage.js
+│ ├── WorkExperiencePage.js
+│ ├── SkillsPage.js
+│ ├── EducationPage.js
+│ ├── DeveloperSetupPage.js
+├── styles/
+│ ├── main.css
+│ ├── Header.css
+├── App.js
+├── index.js
+
+## Features
+
+### Header Component: A navigation bar with links to different sections of the portfolio.
+
+### Basic Info Page: Displays personal information including name, email, location, phone, and LinkedIn profile.
+
+### Work Experience Page: Lists various professional experiences and roles.
+
+### Skills Page: Highlights technical skills, professional expertise, and strengths.
+
+### Education Page: Provides educational background information.
+
+### Developer Setup Page: Describes the developer's preferred setup for coding.
+
+## CI/CD Process
+
+name: CI/CD Pipeline
+
+on:
+push:
+branches: - main
+
+jobs:
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test
+
+    - name: Build project
+      run: npm run build
+
+    - name: Docker build and push
+      run: |
+        docker build -t jing_haodan_coding_assignment14 .
+        docker run -p 5575:80 jing_haodan_coding_assignment14
