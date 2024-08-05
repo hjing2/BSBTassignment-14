@@ -1,0 +1,44 @@
+
+.header {
+  background-color: #f9f9f9;
+  padding: 20px 0;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2em;
+  color: #333333;
+  font-weight: 600;
+}
+
+.header nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+.header nav ul li {
+  margin: 0 15px;
+}
+
+.header nav ul li a {
+  text-decoration: none;
+  color: #333333; /* 使用中性色 */
+  font-weight: 500;
+  font-size: 1.1em;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.header nav ul li a:hover {
+  color: #000000;
+  border-bottom: 2px solid #000000; 
+}
+
+.header nav ul li a:active {
+  color: #555555; 
+}
